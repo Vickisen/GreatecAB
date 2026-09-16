@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Webbplats</title>
+</head>
+<body>
+    <h1>Välkommen till min webbplats!</h1>
+    <p>Det här är min första webbsida via GitHub Pages.</p>
+</body>
+</html>
