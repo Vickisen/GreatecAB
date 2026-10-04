@@ -1,12 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Min Webbplats</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greatec</title>
+  <meta name="description" content="Greatec hjälper småföretag med löpande bokföring, moms, lön och bokslut.">
+  <meta name="theme-color" content="#3b4874">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Välkommen till min webbplats!</h1>
-    <p>Det här är min första webbsida via GitHub Pages.</p>
+    <header class="top">
+      <div class="wrap nav">
+        <a class="logo" href="#top"><i aria-hidden="true">G</i>Greatec</a>
+        <ul>
+          <li><a href="#om">Om oss</a></li>
+          <li><a href="#tjanster">Tjänster</a></li>
+          <li><a href="#process">Så funkar det</a></li>
+          <li><a href="#pris">Pris</a></li>
+          <li><a href="#fragor">Frågor</a></li>
+        </ul>
+        <a class="btn sm" href="#kontakt">Kontakta oss</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="wrap hero">
+        <div>
+          <p class="label" style="margin-bottom:16px">Bokföring för småföretag och enskilda firmor</p>
+          <h1>Bokföring som <span class="mark">går ihop</span>, varje månad.</h1>
+          <p class="lead">Vi sköter <b>löpande bokföring, moms, lön och bokslut</b> åt dig som driver eget. Du fotar kvittot. Vi ser till att debet blir lika med kredit och att Skatteverket får sitt i tid.</p>
+          <div class="cta">
+            <a class="btn" href="#kontakt">Boka ett kostnadsfritt samtal</a>
+            <a class="btn ghost" href="#pris">Räkna ut ditt pris</a>
+          </div>
+        </div>
+        <aside class="ledger" aria-label="Exempel på en bokförd verifikation">
+          <header>
+            <span class="label">Verifikation A 142</span>
+            <span class="label">Exempel</span>
+          </header>
+          <div class="scroll">
+            <table>
+              <thead><tr><th>Konto</th><th class="n">Debet</th><th class="n">Kredit</th></tr></thead>
+              <tbody>
+                <tr><td>6110 Kontorsmateriel</td><td class="n">800,00</td><td class="n"></td></tr>
+                <tr><td>2641 Ingående moms</td><td class="n">200,00</td><td class="n"></td></tr>
+                <tr><td>1930 Företagskonto</td><td class="n"></td><td class="n">1 000,00</td></tr>
+              </tbody>
+              <tfoot><tr><td>Summa</td><td class="n">1 000,00</td><td class="n">1 000,00</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="ok">Balanserar. Moms 25 % avdragsgill.</div>
+        </aside>
+      </div>
+
+      <section id="om">
+        <div class="wrap">
+          <span class="label">Om oss</span>
+          <div class="sec-head">
+            <h2>Vi gillar siffror som stämmer.</h2>
+            <p>Greatec är en liten byrå med auktoriserade redovisningskonsulter. Du får en egen kontaktperson som känner din verksamhet, inte en ärendenummerkö.</p>
+          </div>
+          <div class="about">
+            <div>
+              <h3>Rätt från början</h3>
+              <p>Vi bokför enligt BAS-kontoplanen och god redovisningssed. Varje verifikation har underlag, datum och konto. Revisorn, banken och Skatteverket får den ordning de förväntar sig.</p>
+            </div>
+            <div>
+              <h3>Digitalt, utan krångel</h3>
+              <p>Du fotograferar kvitton i mobilen och kopplar företagskontot. Vi hämtar in och bokför. Allt exporteras som SIE-fil om du byter system eller byrå.</p>
+            </div>
+            <div>
+              <h3>Tydliga priser</h3>
+              <p>Fast månadspris efter antal verifikationer och anställda. Inga timdebiteringar för frågor du ställer i förbifarten.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tjanster">
+        <div class="wrap">
+          <span class="label">Tjänster</span>
+          <div class="sec-head">
+            <h2>Allt mellan kvitto och årsredovisning.</h2>
+            <p>Välj det du behöver. De flesta kunder börjar med löpande bokföring och moms och lägger till resten när företaget växer.</p>
+          </div>
+          <div class="services">
+            <div><span class="acc">Konto 1930–7xxx</span><h3>Löpande bokföring</h3><p>Leverantörs- och kundfakturor, kvitton och bankhändelser bokförs och stäms av varje månad.</p></div>
+            <div><span class="acc">Konto 2610–2650</span><h3>Momsdeklaration</h3><p>Vi redovisar utgående och ingående moms, 25, 12 och 6 %, och skickar in till Skatteverket i tid.</p></div>
+            <div><span class="acc">Konto 7210–7510</span><h3>Löner och arbetsgivardeklaration</h3><p>Lönespecar, skatt, arbetsgivaravgifter och arbetsgivardeklaration på individnivå.</p></div>
+            <div><span class="acc">K2 / K3</span><h3>Bokslut och årsredovisning</h3><p>Bokslut, årsredovisning för aktiebolag och digital inlämning till Bolagsverket.</p></div>
+            <div><span class="acc">INK1 / INK2</span><h3>Deklaration</h3><p>Inkomstdeklaration för enskild firma, näringsbilaga NE eller aktiebolag.</p></div>
+            <div><span class="acc">Rådgivning</span><h3>Månadsrapport</h3><p>Resultat, likviditet och momsskuld i en sida. Du ser hur det går utan att öppna en kontoplan.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="wrap">
+          <span class="label">Så funkar det</span>
+          <div class="sec-head">
+            <h2>Från första samtal till stängd månad.</h2>
+            <p>Stegen går i ordning. Efter uppstarten sköter vi steg 3 till 5 varje månad.</p>
+          </div>
+          <ol class="steps">
+            <li><h3>Samtal</h3><p>Vi går igenom bolagsform, momsperiod och hur du fakturerar idag.</p></li>
+            <li><h3>Uppstart</h3><p>Fullmakt hos Skatteverket, bankkoppling och ingående balanser.</p></li>
+            <li><h3>Underlag</h3><p>Du skickar kvitton och fakturor. Vi påminner om det som saknas.</p></li>
+            <li><h3>Bokföring</h3><p>Vi bokför, stämmer av bank och reskontra och stänger månaden.</p></li>
+            <li><h3>Rapport</h3><p>Du får månadsrapport och moms redovisad före sista dag.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="pris">
+        <div class="wrap">
+          <span class="label">Pris</span>
+          <div class="sec-head">
+            <h2>Räkna ut vad det kostar.</h2>
+            <p>Priserna nedan är exempelpriser för den här demosidan. Byt ut dem mot era egna innan sajten publiceras.</p>
+          </div>
+          <div class="calc">
+            <div class="panel">
+              <div class="field">
+                <div class="row"><label for="v">Verifikationer per månad</label><output id="vOut" for="v">40</output></div>
+                <input id="v" type="range" min="5" max="300" step="5" value="40">
+              </div>
+              <div class="field">
+                <div class="row"><label for="e">Anställda på lön</label><output id="eOut" for="e">0</output></div>
+                <input id="e" type="range" min="0" max="20" step="1" value="0">
+              </div>
+              <fieldset class="field seg" id="moms-field">
+                <legend style="margin-bottom:8px;font-weight:600">Momsredovisning</legend>
+                <label><input type="radio" name="moms" value="0"><span>Ingen moms</span></label>
+                <label><input type="radio" name="moms" value="kv" checked><span>Kvartal</span></label>
+                <label><input type="radio" name="moms" value="man"><span>Månad</span></label>
+              </fieldset>
+              <fieldset class="field seg" id="bokslut-field">
+                <legend style="margin-bottom:8px;font-weight:600">Bolagsform</legend>
+                <label><input type="radio" name="form" value="ef" checked><span>Enskild firma</span></label>
+                <label><input type="radio" name="form" value="ab"><span>Aktiebolag</span></label>
+              </fieldset>
+            </div>
+            <div class="total" aria-live="polite">
+              <span class="label" style="color:inherit;opacity:.85">Ungefärligt pris per månad</span>
+              <span class="big" id="price">0 kr</span>
+              <dl id="breakdown"></dl>
+              <small>Exempelpris exklusive moms. Bokslut och årsredovisning faktureras separat en gång per år.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fragor">
+        <div class="wrap">
+          <span class="label">Vanliga frågor</span>
+          <div class="sec-head"><h2>Det kunderna frågar först.</h2><p></p></div>
+          <div class="faq">
+            <details><summary>Måste jag ha F-skatt för att börja?</summary><p>Nej, men du behöver vara registrerad hos Skatteverket för det du ska göra. Vi hjälper dig med F-skatt och momsregistrering vid uppstart om du inte redan har dem.</p></details>
+            <details><summary>Vad behöver jag spara av underlag?</summary><p>Kvitton, leverantörsfakturor, egna fakturor och kontoutdrag. Enligt bokföringslagen ska räkenskapsinformation sparas i sju år efter räkenskapsårets slut. Vi sparar dem digitalt åt dig.</p></details>
+            <details><summary>Kan jag byta från mitt nuvarande system?</summary><p>Ja. Om ditt system kan exportera en SIE-fil tar vi över bokföringen med ingående balanser och historik.</p></details>
+            <details><summary>Vad är skillnaden mellan K2 och K3?</summary><p>Det är två regelverk för årsredovisning. K2 är förenklat och passar de flesta små aktiebolag. K3 är mer omfattande och används när bolaget är större eller vill redovisa mer detaljerat. Vi väljer tillsammans med dig.</p></details>
+            <details><summary>Hur lång är uppsägningstiden?</summary><p>Ange er egen uppsägningstid här. Tänk på att den bör passa momsperiod och bokslut så att inga månader hamnar mellan två byråer.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section id="kontakt">
+        <div class="wrap contact">
+          <div>
+            <span class="label" style="display:block;margin-bottom:14px">Kontakt</span>
+            <h2>Berätta vad du driver.</h2>
+            <p style="color:var(--muted);margin-top:14px">Du får svar nästa vardag. Första samtalet är kostnadsfritt och tar 30 minuter.</p>
+            <ul>
+              <li><span class="label">E-post (exempel)</span><span class="v" id="mail">hej@greatec.example</span><button class="btn ghost sm copy" type="button" id="copy">Kopiera adress</button></li>
+              <li><span class="label">Telefon (exempel)</span><span class="v">08-123 45 67</span></li>
+              <li><span class="label">Telefontid</span><span class="v">Vardagar 09–16</span></li>
+            </ul>
+          </div>
+          <form id="form" novalidate>
+            <div class="hp" aria-hidden="true"><label for="hp">Lämna fältet tomt</label><input id="hp" type="text" tabindex="-1" autocomplete="off"></div>
+            <div><label for="name">Ditt namn *</label><input id="name" type="text" autocomplete="name" required></div>
+            <div><label for="email">Din e-post *</label><input id="email" type="email" autocomplete="email" required></div>
+            <div>
+              <label for="msg">Berätta om ditt företag (minst 10 ord) *</label>
+              <textarea id="msg"></textarea>
+              <div class="hint" id="count">0 / 10 ord</div>
+            </div>
+            <div><button class="btn" type="submit">Skicka förfrågan</button></div>
+            <div class="status" id="status" hidden role="status"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <q>Debet ska vara lika med kredit. Resten är detaljer.</q>
+      <div>Greatec · Demosida<br>Uppgifter och priser är exempel.</div>
+    </footer>
+  <script src="script.js"></script>
 </body>
 </html>
