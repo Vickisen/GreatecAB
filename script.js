@@ -15,8 +15,28 @@
 
   /* header: skugga vid scroll, mobilmeny, aktiv länk */
   var header = $("header"), menuBtn = $("menuBtn"), menu = $("menu");
-  function onScroll() { header.classList.toggle("scrolled", window.scrollY > 8); }
-  window.addEventListener("scroll", onScroll, { passive: true });
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var progress = $("progress"), steps = $("steps"), blobs = document.querySelectorAll("[data-parallax]");
+  var lastY = window.scrollY, ticking = false;
+  function onScroll() {
+    var y = window.scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    header.classList.toggle("scrolled", y > 8);
+    // Göm menyn när man scrollar nedåt, visa när man scrollar uppåt.
+    header.classList.toggle("hidden", y > 400 && y > lastY && !header.classList.contains("open"));
+    lastY = y;
+    progress.style.setProperty("--p", max > 0 ? y / max : 0);
+    if (!reduce) blobs.forEach(function (b) { b.style.transform = "translate3d(0," + y * +b.getAttribute("data-parallax") + "px,0)"; });
+    if (steps) {
+      var r = steps.getBoundingClientRect();
+      var p = Math.max(0, Math.min(1, (innerHeight * 0.75 - r.top) / r.height));
+      steps.style.setProperty("--p", p);
+      var items = steps.children;
+      for (var i = 0; i < items.length; i++) items[i].classList.toggle("lit", p >= i / (items.length - 1) - 0.02);
+    }
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", onScroll);
   onScroll();
   function setMenu(open) {
     header.classList.toggle("open", open);
@@ -40,9 +60,9 @@
     var reveal = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); reveal.unobserve(en.target); } });
     }, { rootMargin: "0px 0px -8% 0px" });
-    document.querySelectorAll(".reveal").forEach(function (el) { reveal.observe(el); });
+    document.querySelectorAll(".reveal, #deadlines").forEach(function (el) { reveal.observe(el); });
   } else {
-    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+    document.querySelectorAll(".reveal, #deadlines").forEach(function (el) { el.classList.add("in"); });
   }
 
   /* färgläge */
@@ -74,7 +94,9 @@
     $("vOut").textContent = verif;
     $("eOut").textContent = emp;
     var rows = rowsFor(verif, emp, checked("moms"), checked("form"));
-    $("price").textContent = fmt(sum(rows));
+    var price = $("price"), txt = fmt(sum(rows));
+    if (price.textContent !== txt && price.textContent !== "0 kr") { price.classList.remove("bump"); void price.offsetWidth; price.classList.add("bump"); }
+    price.textContent = txt;
     var dl = $("breakdown");
     dl.innerHTML = "";
     rows.forEach(function (r) {
@@ -153,8 +175,29 @@
   }
   renderDeadlines();
 
+  /* hero: verifikationen lutar efter muspekaren */
+  var hv = $("heroVisual");
+  if (hv && !reduce && window.matchMedia("(hover: hover)").matches) {
+    var card = hv.querySelector(".ledger");
+    hv.addEventListener("mousemove", function (ev) {
+      var r = hv.getBoundingClientRect();
+      var x = (ev.clientX - r.left) / r.width - 0.5, y = (ev.clientY - r.top) / r.height - 0.5;
+      card.style.setProperty("--ry", (x * 14).toFixed(2) + "deg");
+      card.style.setProperty("--rx", (-y * 10).toFixed(2) + "deg");
+    });
+    hv.addEventListener("mouseleave", function () { card.style.removeProperty("--ry"); card.style.removeProperty("--rx"); });
+  }
+
+  /* tjänstekort: ljuspunkt som följer pekaren */
+  document.querySelectorAll(".svc").forEach(function (el) {
+    el.addEventListener("pointermove", function (ev) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", ev.clientX - r.left + "px");
+      el.style.setProperty("--my", ev.clientY - r.top + "px");
+    });
+  });
+
   /* räknare i statistikraden */
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduce && "IntersectionObserver" in window) {
     var counter = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
